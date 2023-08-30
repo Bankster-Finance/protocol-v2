@@ -5,6 +5,7 @@ import {
   eEthereumNetwork,
   ePolygonNetwork,
   eXDaiNetwork,
+  eOpBNBNetwork,
   iParamsPerNetwork,
 } from './helpers/types';
 
@@ -19,6 +20,7 @@ const FORK_BLOCK_NUMBER = process.env.FORK_BLOCK_NUMBER
   : 0;
 
 const GWEI = 1000 * 1000 * 1000;
+const WEI = 1000 * 1000;
 
 export const buildForkConfig = (): HardhatNetworkForkingUserConfig | undefined => {
   let forkMode;
@@ -42,7 +44,9 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
     : `https://ropsten.infura.io/v3/${INFURA_KEY}`,
   [eEthereumNetwork.main]: ALCHEMY_KEY
     ? `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY}`
-    : `https://mainnet.infura.io/v3/${INFURA_KEY}`,
+    : // : `https://opbnb-mainnet-rpc.bnbchain.org`,@pedro
+      // `https://rpc.tenderly.co/fork/c4b667dc-138e-4247-92e1-acc5fd602d94`,
+      `http://localhost:8545`,
   [eEthereumNetwork.coverage]: 'http://localhost:8555',
   [eEthereumNetwork.hardhat]: 'http://localhost:8545',
   [eEthereumNetwork.buidlerevm]: 'http://localhost:8545',
@@ -56,12 +60,15 @@ export const NETWORKS_RPC_URL: iParamsPerNetwork<string> = {
   [eAvalancheNetwork.avalanche]: 'https://api.avax.network/ext/bc/C/rpc',
   [eAvalancheNetwork.fuji]: 'https://api.avax-test.network/ext/bc/C/rpc',
   [eEthereumNetwork.goerli]: `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_KEY}`,
+  // [eOpBNBNetwork.opbnb]: `https://opbnb-mainnet-rpc.bnbchain.org`,@pedro marking this line to come back to it
+  [eOpBNBNetwork.opbnb]: `https://rpc.tenderly.co/fork/c4b667dc-138e-4247-92e1-acc5fd602d94`,
 };
 
 export const NETWORKS_DEFAULT_GAS: iParamsPerNetwork<number> = {
   [eEthereumNetwork.kovan]: 3 * GWEI,
   [eEthereumNetwork.ropsten]: 65 * GWEI,
-  [eEthereumNetwork.main]: 65 * GWEI,
+  // [eEthereumNetwork.main]: 65 * GWEI,
+  [eEthereumNetwork.main]: 100 * WEI,
   [eEthereumNetwork.coverage]: 65 * GWEI,
   [eEthereumNetwork.hardhat]: 65 * GWEI,
   [eEthereumNetwork.buidlerevm]: 65 * GWEI,
@@ -69,13 +76,15 @@ export const NETWORKS_DEFAULT_GAS: iParamsPerNetwork<number> = {
   [ePolygonNetwork.mumbai]: 35 * GWEI,
   [ePolygonNetwork.matic]: 35 * GWEI,
   [eXDaiNetwork.xdai]: 1 * GWEI,
+  [eOpBNBNetwork.opbnb]: 2 * GWEI,
   [eAvalancheNetwork.avalanche]: 225 * GWEI,
   [eAvalancheNetwork.fuji]: 85 * GWEI,
   [eEthereumNetwork.goerli]: 2 * GWEI,
 };
 
 export const BLOCK_TO_FORK: iParamsPerNetwork<number | undefined> = {
-  [eEthereumNetwork.main]: 12406069,
+  // [eEthereumNetwork.main]: 12406069,
+  [eEthereumNetwork.main]: undefined,
   [eEthereumNetwork.kovan]: undefined,
   [eEthereumNetwork.ropsten]: undefined,
   [eEthereumNetwork.coverage]: undefined,
@@ -85,6 +94,7 @@ export const BLOCK_TO_FORK: iParamsPerNetwork<number | undefined> = {
   [ePolygonNetwork.mumbai]: undefined,
   [ePolygonNetwork.matic]: undefined,
   [eXDaiNetwork.xdai]: undefined,
+  [eOpBNBNetwork.opbnb]: undefined,
   [eAvalancheNetwork.avalanche]: undefined,
   [eAvalancheNetwork.fuji]: undefined,
   [eEthereumNetwork.goerli]: undefined,

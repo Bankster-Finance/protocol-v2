@@ -9,6 +9,7 @@ import {
   eNetwork,
   ePolygonNetwork,
   eXDaiNetwork,
+  eOpBNBNetwork,
 } from './helpers/types';
 import { BUIDLEREVM_CHAINID, COVERAGE_CHAINID } from './helpers/buidler-constants';
 import {
@@ -92,6 +93,7 @@ const buidlerConfig: HardhatUserConfig = {
       mainnet: process.env.ETHERSCAN_KEY || '',
       polygon: process.env.ETHERSCAN_POLYGON_KEY || '',
       avalanche: process.env.ETHERSCAN_SNOWTRACE_KEY || '',
+      opbnb: process.env.ETHERSCAN_OPBNB_KEY || '',
     },
   },
 
@@ -110,7 +112,7 @@ const buidlerConfig: HardhatUserConfig = {
     },
     kovan: getCommonNetworkConfig(eEthereumNetwork.kovan, 42),
     ropsten: getCommonNetworkConfig(eEthereumNetwork.ropsten, 3),
-    main: getCommonNetworkConfig(eEthereumNetwork.main, 1),
+    main: getCommonNetworkConfig(eEthereumNetwork.main, 10), //@pedro
     tenderly: getCommonNetworkConfig(eEthereumNetwork.tenderly, 3030),
     matic: getCommonNetworkConfig(ePolygonNetwork.matic, 137),
     mumbai: getCommonNetworkConfig(ePolygonNetwork.mumbai, 80001),
@@ -118,6 +120,7 @@ const buidlerConfig: HardhatUserConfig = {
     avalanche: getCommonNetworkConfig(eAvalancheNetwork.avalanche, 43114),
     fuji: getCommonNetworkConfig(eAvalancheNetwork.fuji, 43113),
     goerli: getCommonNetworkConfig(eEthereumNetwork.goerli, 5),
+    opbnb: getCommonNetworkConfig(eOpBNBNetwork.opbnb, 204),
     hardhat: {
       hardfork: 'berlin',
       blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,
