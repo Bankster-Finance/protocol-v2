@@ -7,9 +7,9 @@ import {
   eAvalancheNetwork,
   eEthereumNetwork,
   eNetwork,
+  eOpBNBNetwork,
   ePolygonNetwork,
   eXDaiNetwork,
-  eOpBNBNetwork,
 } from './helpers/types';
 import { BUIDLEREVM_CHAINID, COVERAGE_CHAINID } from './helpers/buidler-constants';
 import {

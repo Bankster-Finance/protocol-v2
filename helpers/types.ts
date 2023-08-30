@@ -23,6 +23,10 @@ export enum eEthereumNetwork {
   goerli = 'goerli',
 }
 
+export enum eOpBNBNetwork {
+  op_bnb = 'op_bnb',
+}
+
 export enum ePolygonNetwork {
   matic = 'matic',
   mumbai = 'mumbai',
@@ -227,6 +231,9 @@ export interface iAssetCommon<T> {
   [key: string]: T;
 }
 export interface iAssetBase<T> {
+  BKS: T;
+  WBNB: T;
+  ZO_ZO: T;
   WETH: T;
   DAI: T;
   TUSD: T;
@@ -301,27 +308,30 @@ export type iAavePoolAssets<T> = Pick<
 
 export type iLpPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  // | 'DAI'
-  // | 'USDC'
-  // | 'USDT'
-  // | 'WBTC'
-  'WETH'
-  // | 'UniDAIWETH'
-  // | 'UniWBTCWETH'
-  // | 'UniAAVEWETH'
-  // | 'UniBATWETH'
-  // | 'UniDAIUSDC'
-  // | 'UniCRVWETH'
-  // | 'UniLINKWETH'
-  // | 'UniMKRWETH'
-  // | 'UniRENWETH'
-  // | 'UniSNXWETH'
-  // | 'UniUNIWETH'
-  // | 'UniUSDCWETH'
-  // | 'UniWBTCUSDC'
-  // | 'UniYFIWETH'
-  // | 'BptWBTCWETH'
-  // | 'BptBALWETH'
+  | 'ZO_ZO'
+  | 'BKS'
+  | 'WBNB'
+  | 'DAI'
+  | 'USDC'
+  | 'USDT'
+  | 'WBTC'
+  | 'WETH'
+  | 'UniDAIWETH'
+  | 'UniWBTCWETH'
+  | 'UniAAVEWETH'
+  | 'UniBATWETH'
+  | 'UniDAIUSDC'
+  | 'UniCRVWETH'
+  | 'UniLINKWETH'
+  | 'UniMKRWETH'
+  | 'UniRENWETH'
+  | 'UniSNXWETH'
+  | 'UniUNIWETH'
+  | 'UniUSDCWETH'
+  | 'UniWBTCUSDC'
+  | 'UniYFIWETH'
+  | 'BptWBTCWETH'
+  | 'BptBALWETH'
 >;
 
 export type iMaticPoolAssets<T> = Pick<
@@ -334,15 +344,12 @@ export type iXDAIPoolAssets<T> = Pick<
   'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH' | 'STAKE'
 >;
 
-export type iOpBNBPoolAssets<T> = Pick<
-  iAssetsWithoutUSD<T>,
-  'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH' | 'BUSD'
->;
-
 export type iAvalanchePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
   'WETH' | 'DAI' | 'USDT' | 'AAVE' | 'WBTC' | 'WAVAX' | 'USDC'
 >;
+
+export type iOpBNBPoolAssets<T> = Pick<iAssetsWithoutUSD<T>, 'WBNB' | 'BKS' | 'ZO_ZO'>;
 
 export type iMultiPoolsAssets<T> = iAssetCommon<T> | iAavePoolAssets<T>;
 
@@ -351,6 +358,9 @@ export type iAavePoolTokens<T> = Omit<iAavePoolAssets<T>, 'ETH'>;
 export type iAssetAggregatorBase<T> = iAssetsWithoutETH<T>;
 
 export enum TokenContractId {
+  WBNB = 'WBNB',
+  ZO_ZO = 'ZO_ZO',
+  BKS = 'BKS',
   DAI = 'DAI',
   AAVE = 'AAVE',
   TUSD = 'TUSD',
@@ -579,6 +589,10 @@ export interface IOpBNBConfiguration extends ICommonConfiguration {
 
 export interface IAvalancheConfiguration extends ICommonConfiguration {
   ReservesConfig: iAvalanchePoolAssets<IReserveParams>;
+}
+
+export interface IOpBNBConfiguration extends ICommonConfiguration {
+  ReservesConfig: iOpBNBPoolAssets<IReserveParams>;
 }
 
 export interface ITokenAddress {
