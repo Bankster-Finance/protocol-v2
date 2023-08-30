@@ -4,7 +4,12 @@ export interface SymbolMap<T> {
   [symbol: string]: T;
 }
 
-export type eNetwork = eEthereumNetwork | ePolygonNetwork | eXDaiNetwork | eAvalancheNetwork;
+export type eNetwork =
+  | eEthereumNetwork
+  | ePolygonNetwork
+  | eXDaiNetwork
+  | eAvalancheNetwork
+  | eOpBNBNetwork;
 
 export enum eEthereumNetwork {
   buidlerevm = 'buidlerevm',
@@ -27,6 +32,10 @@ export enum eXDaiNetwork {
   xdai = 'xdai',
 }
 
+export enum eOpBNBNetwork {
+  opbnb = 'opbnb',
+}
+
 export enum eAvalancheNetwork {
   avalanche = 'avalanche',
   fuji = 'fuji',
@@ -41,6 +50,7 @@ export enum EthereumNetworkNames {
   xdai = 'xdai',
   avalanche = 'avalanche',
   fuji = 'fuji',
+  opbnb = 'opbnb',
 }
 
 export enum AavePools {
@@ -48,6 +58,7 @@ export enum AavePools {
   matic = 'matic',
   amm = 'amm',
   avalanche = 'avalanche',
+  opbnb = 'opbnb',
 }
 
 export enum eContractid {
@@ -265,52 +276,52 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, 'USD'>;
 
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  | 'DAI'
-  | 'TUSD'
-  | 'USDC'
-  | 'USDT'
-  | 'SUSD'
-  | 'AAVE'
-  | 'BAT'
-  | 'MKR'
-  | 'LINK'
-  | 'KNC'
-  | 'WBTC'
-  | 'MANA'
-  | 'ZRX'
-  | 'SNX'
-  | 'BUSD'
-  | 'WETH'
-  | 'YFI'
-  | 'UNI'
-  | 'REN'
-  | 'ENJ'
-  | 'xSUSHI'
+  // | 'DAI'
+  // | 'TUSD'
+  // | 'USDC'
+  // | 'USDT'
+  // | 'SUSD'
+  // | 'AAVE'
+  // | 'BAT'
+  // | 'MKR'
+  // | 'LINK'
+  // | 'KNC'
+  // | 'WBTC'
+  // | 'MANA'
+  // | 'ZRX'
+  // | 'SNX'
+  // | 'BUSD'
+  'WETH'
+  // | 'YFI'
+  // | 'UNI'
+  // | 'REN'
+  // | 'ENJ'
+  // | 'xSUSHI'
 >;
 
 export type iLpPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  | 'DAI'
-  | 'USDC'
-  | 'USDT'
-  | 'WBTC'
-  | 'WETH'
-  | 'UniDAIWETH'
-  | 'UniWBTCWETH'
-  | 'UniAAVEWETH'
-  | 'UniBATWETH'
-  | 'UniDAIUSDC'
-  | 'UniCRVWETH'
-  | 'UniLINKWETH'
-  | 'UniMKRWETH'
-  | 'UniRENWETH'
-  | 'UniSNXWETH'
-  | 'UniUNIWETH'
-  | 'UniUSDCWETH'
-  | 'UniWBTCUSDC'
-  | 'UniYFIWETH'
-  | 'BptWBTCWETH'
-  | 'BptBALWETH'
+  // | 'DAI'
+  // | 'USDC'
+  // | 'USDT'
+  // | 'WBTC'
+  'WETH'
+  // | 'UniDAIWETH'
+  // | 'UniWBTCWETH'
+  // | 'UniAAVEWETH'
+  // | 'UniBATWETH'
+  // | 'UniDAIUSDC'
+  // | 'UniCRVWETH'
+  // | 'UniLINKWETH'
+  // | 'UniMKRWETH'
+  // | 'UniRENWETH'
+  // | 'UniSNXWETH'
+  // | 'UniUNIWETH'
+  // | 'UniUSDCWETH'
+  // | 'UniWBTCUSDC'
+  // | 'UniYFIWETH'
+  // | 'BptWBTCWETH'
+  // | 'BptBALWETH'
 >;
 
 export type iMaticPoolAssets<T> = Pick<
@@ -321,6 +332,11 @@ export type iMaticPoolAssets<T> = Pick<
 export type iXDAIPoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
   'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH' | 'STAKE'
+>;
+
+export type iOpBNBPoolAssets<T> = Pick<
+  iAssetsWithoutUSD<T>,
+  'DAI' | 'USDC' | 'USDT' | 'WBTC' | 'WETH' | 'BUSD'
 >;
 
 export type iAvalanchePoolAssets<T> = Pick<
@@ -419,11 +435,13 @@ export type iParamsPerNetwork<T> =
   | iEthereumParamsPerNetwork<T>
   | iPolygonParamsPerNetwork<T>
   | iXDaiParamsPerNetwork<T>
+  | iOpBNBParamsPerNetwork<T>
   | iAvalancheParamsPerNetwork<T>;
 
 export interface iParamsPerNetworkAll<T>
   extends iEthereumParamsPerNetwork<T>,
     iPolygonParamsPerNetwork<T>,
+    iOpBNBParamsPerNetwork<T>,
     iXDaiParamsPerNetwork<T> {}
 
 export interface iEthereumParamsPerNetwork<T> {
@@ -444,6 +462,10 @@ export interface iPolygonParamsPerNetwork<T> {
 
 export interface iXDaiParamsPerNetwork<T> {
   [eXDaiNetwork.xdai]: T;
+}
+
+export interface iOpBNBParamsPerNetwork<T> {
+  [eOpBNBNetwork.opbnb]: T;
 }
 
 export interface iAvalancheParamsPerNetwork<T> {
@@ -549,6 +571,10 @@ export interface IMaticConfiguration extends ICommonConfiguration {
 
 export interface IXDAIConfiguration extends ICommonConfiguration {
   ReservesConfig: iXDAIPoolAssets<IReserveParams>;
+}
+
+export interface IOpBNBConfiguration extends ICommonConfiguration {
+  ReservesConfig: iOpBNBPoolAssets<IReserveParams>;
 }
 
 export interface IAvalancheConfiguration extends ICommonConfiguration {

@@ -14,6 +14,8 @@ import {
   ePolygonNetwork,
   eXDaiNetwork,
   eNetwork,
+  eOpBNBNetwork,
+  iOpBNBParamsPerNetwork,
   iEthereumParamsPerNetwork,
   iPolygonParamsPerNetwork,
   iXDaiParamsPerNetwork,
@@ -149,6 +151,7 @@ export const getParamPerNetwork = <T>(param: iParamsPerNetwork<T>, network: eNet
     param as iEthereumParamsPerNetwork<T>;
   const { matic, mumbai } = param as iPolygonParamsPerNetwork<T>;
   const { xdai } = param as iXDaiParamsPerNetwork<T>;
+  const { opbnb } = param as iOpBNBParamsPerNetwork<T>;
   const { avalanche, fuji } = param as iAvalancheParamsPerNetwork<T>;
   if (process.env.FORK) {
     return param[process.env.FORK as eNetwork] as T;
@@ -175,6 +178,8 @@ export const getParamPerNetwork = <T>(param: iParamsPerNetwork<T>, network: eNet
       return mumbai;
     case eXDaiNetwork.xdai:
       return xdai;
+    case eOpBNBNetwork.opbnb:
+      return opbnb;
     case eAvalancheNetwork.avalanche:
       return avalanche;
     case eAvalancheNetwork.fuji:
