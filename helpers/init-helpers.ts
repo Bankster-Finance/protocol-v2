@@ -160,7 +160,6 @@ export const initReservesByHelper = async (
   const configurator = await getLendingPoolConfiguratorProxy();
 
   console.log(`- Reserves initialization in ${chunkedInitInputParams.length} txs`);
-  console.log(`- CONFIGURATOR: ${configurator.address}`);
   for (let chunkIndex = 0; chunkIndex < chunkedInitInputParams.length; chunkIndex++) {
     console.log(` - ChunkInitInputParams at index ${chunkIndex}:`);
     console.log(chunkedInitInputParams[chunkIndex]);

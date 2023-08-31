@@ -34,6 +34,7 @@ export const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
   // Update to USD-based price feeds
   AAVE: oneEther.multipliedBy('0.003620948469').toFixed(),
   BAT: oneEther.multipliedBy('0.00137893825230').toFixed(),
+  BNB: oneEther.multipliedBy('0.020000').toFixed(),
   BUSD: oneEther.multipliedBy('0.00736484').toFixed(),
   DAI: oneEther.multipliedBy('0.00369068412860').toFixed(),
   ENJ: oneEther.multipliedBy('0.00029560').toFixed(),
@@ -53,6 +54,7 @@ export const MOCK_CHAINLINK_AGGREGATORS_PRICES = {
   YFI: oneEther.multipliedBy('22.407436').toFixed(),
   ZRX: oneEther.multipliedBy('0.001151').toFixed(),
   UniDAIWETH: oneEther.multipliedBy('22.407436').toFixed(),
+  UniBNBWETH: oneEther.multipliedBy('22.407436').toFixed(),
   UniWBTCWETH: oneEther.multipliedBy('22.407436').toFixed(),
   UniAAVEWETH: oneEther.multipliedBy('0.003620948469').toFixed(),
   UniBATWETH: oneEther.multipliedBy('22.407436').toFixed(),
@@ -87,6 +89,7 @@ export const chainlinkAggregatorProxy = {
   arbitrum: '0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612',
   rinkeby: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e',
   goerli: '0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e',
+  // opbnb: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE', //mock address//@pedro
 };
 
 export const chainlinkEthUsdAggregatorProxy = {
@@ -101,4 +104,5 @@ export const chainlinkEthUsdAggregatorProxy = {
   arbitrum: '0x639Fe6ab55C921f74e7fac1ee960C0B6293ba612',
   rinkeby: '0x8A753747A1Fa494EC906cE90E9f37563A8AF630e',
   goerli: '0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e',
+  // opbnb: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE', //mock address//mock address//@pedro
 };

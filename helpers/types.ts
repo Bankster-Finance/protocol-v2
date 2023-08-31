@@ -283,27 +283,27 @@ export type iAssetsWithoutUSD<T> = Omit<iAssetBase<T>, 'USD'>;
 
 export type iAavePoolAssets<T> = Pick<
   iAssetsWithoutUSD<T>,
-  // | 'DAI'
-  // | 'TUSD'
-  // | 'USDC'
-  // | 'USDT'
-  // | 'SUSD'
-  // | 'AAVE'
-  // | 'BAT'
-  // | 'MKR'
-  // | 'LINK'
-  // | 'KNC'
-  // | 'WBTC'
-  // | 'MANA'
-  // | 'ZRX'
-  // | 'SNX'
-  // | 'BUSD'
-  'WETH'
-  // | 'YFI'
-  // | 'UNI'
-  // | 'REN'
-  // | 'ENJ'
-  // | 'xSUSHI'
+  | 'AAVE'
+  | 'BAT'
+  | 'DAI'
+  | 'TUSD'
+  | 'USDC'
+  | 'USDT'
+  | 'SUSD'
+  | 'MKR'
+  | 'LINK'
+  | 'KNC'
+  | 'WBTC'
+  | 'MANA'
+  | 'ZRX'
+  | 'SNX'
+  | 'BUSD'
+  | 'WETH'
+  | 'YFI'
+  | 'UNI'
+  | 'REN'
+  | 'ENJ'
+  | 'xSUSHI'
 >;
 
 export type iLpPoolAssets<T> = Pick<
@@ -589,10 +589,6 @@ export interface IOpBNBConfiguration extends ICommonConfiguration {
 
 export interface IAvalancheConfiguration extends ICommonConfiguration {
   ReservesConfig: iAvalanchePoolAssets<IReserveParams>;
-}
-
-export interface IOpBNBConfiguration extends ICommonConfiguration {
-  ReservesConfig: iOpBNBPoolAssets<IReserveParams>;
 }
 
 export interface ITokenAddress {

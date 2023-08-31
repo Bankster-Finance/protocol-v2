@@ -191,8 +191,12 @@ export const getQuoteCurrencies = (oracleQuoteCurrency: string): string[] => {
   switch (oracleQuoteCurrency) {
     case 'USD':
       return ['USD'];
+    case 'BNB':
+    case 'WBNB':
+      return ['BNB', 'WBNB'];
     case 'ETH':
     case 'WETH':
+      return ['ETH', 'WETH'];
     default:
       return ['ETH', 'WETH'];
   }

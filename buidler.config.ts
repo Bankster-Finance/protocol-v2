@@ -34,9 +34,7 @@ task(`set-DRE`, `Inits the DRE, to have access to all the plugins' objects`).set
 
 const getCommonNetworkConfig = (networkName: eOpBnbNetwork, networkId: number) => {
   return {
-    // url: `https://opbnb-mainnet-rpc.bnbchain.org`,
-    url: `https://rpc.tenderly.co/fork/c4b667dc-138e-4247-92e1-acc5fd602d94`,
-    //@pedro marking this line to come back to it
+    url: 'https://opbnb-mainnet-rpc.bnbchain.org',
     hardfork: HARDFORK,
     blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,
     gasMultiplier: DEFAULT_GAS_PRICE,
@@ -74,7 +72,7 @@ const buidlerConfig: any = {
     },
     kovan: getCommonNetworkConfig(eEthereumNetwork.kovan, 42),
     ropsten: getCommonNetworkConfig(eEthereumNetwork.ropsten, 3),
-    main: getCommonNetworkConfig(eEthereumNetwork.main, 10), //@pedro marking this line to come back to it
+    main: getCommonNetworkConfig(eEthereumNetwork.main, 1),
     buidlerevm: {
       hardfork: 'istanbul',
       blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,

@@ -10,6 +10,7 @@ import { getEthersSignersAddresses, getParamPerPool } from './contracts-helpers'
 import AaveConfig from '../markets/aave';
 import MaticConfig from '../markets/matic';
 import AvalancheConfig from '../markets/avalanche';
+import OpbnbConfig from '../markets/opbnb';
 import AmmConfig from '../markets/amm';
 
 import { CommonsConfig } from '../markets/aave/commons';
@@ -23,7 +24,8 @@ export enum ConfigNames {
   Aave = 'Aave',
   Matic = 'Matic',
   Amm = 'Amm',
-  Avalanche = 'Avalanche'
+  Avalanche = 'Avalanche',
+  OpBNB = 'OpBNB',
 }
 
 export const loadPoolConfig = (configName: ConfigNames): PoolConfiguration => {
@@ -34,8 +36,10 @@ export const loadPoolConfig = (configName: ConfigNames): PoolConfiguration => {
       return MaticConfig;
     case ConfigNames.Amm:
       return AmmConfig;
-      case ConfigNames.Avalanche:
-        return AvalancheConfig;
+    case ConfigNames.Avalanche:
+      return AvalancheConfig;
+    case ConfigNames.OpBNB:
+      return OpbnbConfig;
     case ConfigNames.Commons:
       return CommonsConfig;
     default:
@@ -65,7 +69,10 @@ export const getReservesConfigByPool = (pool: AavePools): iMultiPoolsAssets<IRes
       },
       [AavePools.avalanche]: {
         ...AvalancheConfig.ReservesConfig,
-      }
+      },
+      [AavePools.opbnb]: {
+        ...OpbnbConfig.ReservesConfig,
+      },
     },
     pool
   );
@@ -137,6 +144,7 @@ export const getLendingRateOracles = (poolConfig: IBaseConfiguration) => {
     ReserveAssets,
   } = poolConfig;
 
+  console.log('getLendingRateOracles');
   const network = process.env.FORK ? process.env.FORK : DRE.network.name;
   return filterMapBy(LendingRateOracleRatesCommon, (key) =>
     Object.keys(ReserveAssets[network]).includes(key)
@@ -145,6 +153,7 @@ export const getLendingRateOracles = (poolConfig: IBaseConfiguration) => {
 
 export const getQuoteCurrency = async (config: IBaseConfiguration) => {
   switch (config.OracleQuoteCurrency) {
+    case 'BNB':
     case 'ETH':
     case 'WETH':
       return getWethAddress(config);

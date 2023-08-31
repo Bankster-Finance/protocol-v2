@@ -37,20 +37,20 @@ export const CommonsConfig: ICommonConfiguration = {
       ...MOCK_CHAINLINK_AGGREGATORS_PRICES,
     },
   },
-  // TODO: reorg alphabetically, checking the reason of tests failing
+
   LendingRateOracleRatesCommon: {
-    // BKS: {
-    //   borrowRate: oneRay.multipliedBy(0.03).toFixed(),
-    // },
+    BKS: {
+      borrowRate: oneRay.multipliedBy(0.03).toFixed(),
+    },
     BUSD: {
       borrowRate: oneRay.multipliedBy(0.05).toFixed(),
     },
     WBNB: {
       borrowRate: oneRay.multipliedBy(0.03).toFixed(),
     },
-    // ZO_ZO: {
-    //   borrowRate: oneRay.multipliedBy(0.03).toFixed(),
-    // },
+    ZO_ZO: {
+      borrowRate: oneRay.multipliedBy(0.03).toFixed(),
+    },
   },
   // ----------------
   // COMMON PROTOCOL ADDRESSES ACROSS POOLS

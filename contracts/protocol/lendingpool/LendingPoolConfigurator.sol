@@ -77,7 +77,6 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
         input.underlyingAssetDecimals,
         input.aTokenName,
         input.aTokenSymbol,
-        //@pedro debug
         input.params
       )
     );
